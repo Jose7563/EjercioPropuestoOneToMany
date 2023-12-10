@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>Inquilino</title>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+</head>
+
+<body>
+	<header th:replace="template :: header"></header>
+	<nav th:replace="template :: menu"></nav>
+	<div class="container">
+		<div class="row">
+			<div class="col-12">
+				<h3>Agregar Inquilino</h3>
+				<form action="#" th:action="@{/inquilinoCrear}"
+					th:object="${inquilino}" method="post">
+					<div class="my-2">
+						<label class="form-label">Nombre</label>
+						<input type="text" th:field="*{nombres}" class="form-control" />
+					<p class="alert alert-warning mt-2" 
+							th:if="${#fields.hasErrors('nombres')}" 
+							th:errors="*{nombres}"></p>
+					</div>
+					
+					<div class="my-2">
+						<label class="form-label">A.Paterno</label>
+						<input type="text" th:field="*{paterno}" class="form-control" />
+						<p class="alert alert-warning mt-2" 
+							th:if="${#fields.hasErrors('paterno')}" 
+							th:errors="*{paterno}"></p>
+					</div>
+					<div class="my-2">
+						<label class="form-label">A.Materno</label>
+						<input type="text" th:field="*{materno}" class="form-control" />
+						<p class="alert alert-warning mt-2" 
+							th:if="${#fields.hasErrors('materno')}" 
+							th:errors="*{materno}"></p>
+					</div>
+					<div class="my-2">
+						<label class="form-label">Telefono</label>
+						<input type="text" th:field="*{telefono}" class="form-control" />
+						<p class="alert alert-warning mt-2" 
+							th:if="${#fields.hasErrors('telefono')}" 
+							th:errors="*{telefono}"></p>
+					</div>
+					<div class="my-2">
+						<label class="form-label">Dni</label>
+						<input type="text" th:field="*{dni}" class="form-control" />
+						<p class="alert alert-warning mt-2" 
+							th:if="${#fields.hasErrors('dni')}" 
+							th:errors="*{dni}"></p>
+					</div>
+					<div class="my-2">
+						<label class="form-label">Correo</label>
+						<input type="text" th:field="*{correo}" class="form-control" />
+						<p class="alert alert-warning mt-2" 
+							th:if="${#fields.hasErrors('correo')}" 
+							th:errors="*{correo}"></p>
+					</div>
+					<div class="my-2">
+						<label class="form-label">Deuda</label>
+						<input type="text" th:field="*{deuda}" class="form-control" />
+						<p class="alert alert-warning mt-2" 
+							th:if="${#fields.hasErrors('deuda')}" 
+							th:errors="*{deuda}"></p>
+					</div>
+					
+					<div class="my-2">
+						<label class="form-label">Fecha Ingreso</label>
+						<input type="date" th:field="*{fecha}" class="form-control" />
+						<p class="alert alert-warning mt-2" 
+							th:if="${#fields.hasErrors('fecha')}" 
+							th:errors="*{fecha}"></p>
+					</div>
+					
+					<p class="text-center mt-3">
+						<button type="submit" class="btn btn-success mx-3">Agregar</button>
+						<a th:href="@{/inquilinos}" class="btn btn-secondary mx-3">Regresar</a>
+					</p>
+				</form>
+			</div>
+		</div>
+	</div>
+	<footer th:replace="template :: footer"></footer>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+		crossorigin="anonymous"></script>
+</body>
+
+</html>

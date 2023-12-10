@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="utf-8">
+	<title>Indice</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+	
+</head>
+
+<body>
+	<nav th:replace="template :: menu"></nav>
+	<div class="container">
+		<div class="row">
+			<div class="col-12">
+				<div class="alert alert-primary" role="alert" th:if="${mensaje}">
+					<p th:text="${mensaje}"></p>
+				</div>
+				<h3>Tabla de Inquilinos</h3>
+
+				<a th:href="@{/inquilinoNuevo}" class="btn btn-primary my-3">Nuevo inquilino</a>
+				<table class="table table-success">
+					<thead>
+						<tr>
+							<th>ID</th>
+							<th>Nombre</th>
+							<th>A. Paterno</th>
+							<th>A. Materno</th>
+							<th>Dni</th>
+							<th>Telefono</th>
+							<th>Email</th>
+							<th>Deuda</th>
+							<th>Fecha Ingreso</th>
+
+							<th colspan="2">Acciones</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="p : ${inquilinos}" >
+							<th th:text="${p.idInquilinos}"></th>
+							<td th:text="${p.nombres}"></td>
+							<td th:text="${p.paterno}"></td>
+							<td th:text="${p.materno}"></td>
+							<td th:text="${p.dni}"></td>
+							<td th:text="${p.telefono}"></td>
+
+							<td th:text="${p.correo}"></td>
+							<td th:text="${p.deuda}"></td>
+							<td th:text="${p.fecha}"></td>
+							<td>
+								<a th:href="@{/inquilinoObtener/{id}(id=${p.idInquilinos})}" href="#"
+									class="btn btn-sm btn-warning">
+									Editar
+								</a>
+							</td>
+							<td>
+								<a th:href="@{/inquilinoEliminar(id=${p.idInquilinos})}" href="#"
+									onclick="return(confirm('¿Deseas eliminar?'));" class="btn btn-sm btn-danger">
+									Eliminar
+								</a>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+
+
+
+	
+
+</body>
+
+</html>
